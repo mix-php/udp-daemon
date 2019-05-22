@@ -1,15 +1,15 @@
 <?php
 
-namespace Mix\Udp\Daemon\Commands\Service;
+namespace Mix\Udp\Daemon\Commands;
 
 use Mix\Helper\ProcessHelper;
 
 /**
- * Class ReloadCommand
+ * Class RestartCommand
  * @package Mix\Udp\Daemon\Commands\Service
  * @author liu,jian <coder.keda@gmail.com>
  */
-class ReloadCommand extends BaseCommand
+class RestartCommand extends StartCommand
 {
 
     /**
@@ -23,9 +23,14 @@ class ReloadCommand extends BaseCommand
             println(self::NOT_RUNNING);
             return;
         }
-        // 重启子进程
-        ProcessHelper::kill($pid, SIGUSR1);
-        println(self::EXEC_SUCCESS);
+        // 停止服务
+        ProcessHelper::kill($pid);
+        while (ProcessHelper::kill($pid, 0)) {
+            // 等待进程退出
+            usleep(100000);
+        }
+        // 启动服务
+        parent::main();
     }
 
 }

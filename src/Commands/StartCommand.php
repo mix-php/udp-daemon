@@ -1,6 +1,6 @@
 <?php
 
-namespace Mix\Udp\Daemon\Commands\Service;
+namespace Mix\Udp\Daemon\Commands;
 
 use Mix\Console\CommandLine\Flag;
 use Mix\Udp\Server\UdpServer;
