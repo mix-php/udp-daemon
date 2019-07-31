@@ -1,6 +1,6 @@
 {
   "name": "mix/udp-daemon",
-  "description": "MixPHP Tcp 守护程序 http://www.mixphp.cn",
+  "description": "Mix UDP Daemon http://www.mixphp.cn",
   "type": "project",
   "keywords": [
     "framework",
